@@ -1,0 +1,11 @@
+.register__auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 17px;
+    margin-top: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 121%;
+    text-align: center;
+}

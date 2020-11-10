@@ -1,0 +1,11 @@
+@import url(./__title/register__title.css);
+@import url(./__form/register__form.css);
+@import url(./__input/register__input.css);
+@import url(./__button-singup/register__button-singup.css);
+@import url(./__auth/register__auth.css);
+@import url(./__auth_link/register__auth_link.css);
+.register{
+    max-width: 358px;
+    margin: auto;
+    margin-top: 60px;
+}

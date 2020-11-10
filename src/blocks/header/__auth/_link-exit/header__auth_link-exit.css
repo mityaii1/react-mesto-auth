@@ -1,0 +1,13 @@
+.header__auth_link-exit {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 122%;
+    text-decoration: none;
+    text-align: right;
+    color: #A9A9A9;
+    margin-left: 24px;
+}
+
+.header__auth_link-exit:hover {
+    cursor: pointer;
+}

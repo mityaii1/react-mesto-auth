@@ -1,0 +1,20 @@
+@import url(./__logo/header__logo.css);
+@import url(./__auth/header__auth.css);
+@import url(./__auth/_link/header__auth_link.css);
+@import url(./__auth/_link-exit/header__auth_link-exit.css);
+@import url(./__auth/_email/header__auth_email.css);
+.header{
+    display: flex;
+    max-width: 882px;
+    justify-content: space-between;
+    margin: auto;
+    margin-bottom: 45px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+
+@media screen and (max-width: 767px){
+    .header{
+        margin-bottom: 42px;
+    }
+}

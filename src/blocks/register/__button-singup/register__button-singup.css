@@ -1,0 +1,14 @@
+.register__button-singup {
+    height: 50px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 122%;
+    text-align: center;
+    outline: none;
+}
+.register__button-singup:hover {
+    transition: .2s ease-in;
+    background: rgba(255, 254, 254, 0.85);
+}
