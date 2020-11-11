@@ -27,7 +27,7 @@ function Login({ onLogin }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(data)
+        
         const { email, password } = data;
         if (!email || !password) {
             return;
@@ -38,7 +38,7 @@ function Login({ onLogin }) {
                     setMessage('Что-то пошло не так!')
                 }
                 if (data) {
-                    setToken(data.jwt);
+                    setToken(data.token);
                     setData({ email: '', password: '' });
                     setMessage('');
                     onLogin(email, password)

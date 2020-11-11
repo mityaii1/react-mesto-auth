@@ -129,7 +129,7 @@ function App() {
         setLoggedIn(true);
         setEmail(email);
     };
-
+    
     const tokenCheck = () => {
         const jwt = getToken();
         if (!jwt) {
@@ -138,10 +138,8 @@ function App() {
         apiAuth.checkToken(jwt)
             .then((res) => {
                 if (res) {
-                    const email = res.email;
-
+                    setEmail(res.data.email)
                     setLoggedIn(true);
-                    setEmail(email);
                     history.push('/')
                 }
             })
@@ -168,7 +166,7 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
-                {loggedIn ? <Header email={email} routePathName={'Выйти'} routePath={'/sign-in'} loggedIn={loggedIn} loggedOut={onSignOut} /> : ''}
+                {loggedIn ? <Header email={email} routePathName={'Выйти'}  loggedIn={loggedIn} loggedOut={onSignOut} /> : ''}
                 <Switch>
                     <Route path="/sign-up">
                         <Header routePathName={'Войти'} routePath={'/sign-in'} loggedIn={loggedIn} />
@@ -189,7 +187,7 @@ function App() {
                 </Switch>
 
                 <Route>
-                    {loggedIn === true ? <Redirect to='/sign-in' /> : <Redirect to='/' />}
+                    {loggedIn === true ? <Redirect to='/' /> : <Redirect to='/sign-in' />}
                 </Route>
                 <Footer />
                 <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />

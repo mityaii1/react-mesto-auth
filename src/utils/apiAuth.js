@@ -1,4 +1,4 @@
-import { setToken } from './token';
+import { setToken, getToken } from './token';
 
 export const BASE_URL = 'https://auth.nomoreparties.co';
 
@@ -36,10 +36,9 @@ export const BASE_URL = 'https://auth.nomoreparties.co';
         })
         .then((response => response.json()))
         .then((data) => {
-            console.log(data)
-          if (data){
             
-            setToken(data.jwt);
+          if (data){
+            setToken(data);
             return data;
           } else {
             return;
@@ -56,8 +55,12 @@ export const BASE_URL = 'https://auth.nomoreparties.co';
                 'Authorization': `Bearer ${token}`
             },
         })
-        .then(res => res.json())
-        .then(data => data)
+        
+        .then((response => response.json()))
+       
+        
+        
+        
     }
 
 
