@@ -21,11 +21,14 @@ function Register(props) {
                 if (res) {
                     props.onInfoTooltip(true, 'Вы успешно зарегистрировались!')
                     history.push('/sign-in');
-                } 
+                }
             })
             .catch((err) => {
-                if(err.status === 400) {
+                if (err.status === 400) {
                     props.onInfoTooltip(false, 'Что-то пошло не так! Попробуйте ещё раз.')
+                    console.log('Hекорректно заполнено одно из полей')
+                } else {
+                    console.log(err)
                 }
             })
     }

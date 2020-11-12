@@ -51,13 +51,15 @@ function App() {
                 .then((newCard) => {
                     const newCards = cards.map((c) => c._id === card._id ? newCard : c);
                     setCards(newCards);
-                });
+                })
+                .catch((err) => { console.log(err); });
         if (isLiked)
             api.deleteLike(card._id)
                 .then((newCard) => {
                     const newCards = cards.map((c) => c._id === card._id ? newCard : c);
                     setCards(newCards);
-                });
+                })
+                .catch((err) => { console.log(err); });
     }
     const handleUpdateUser = (user) => {
         api.setUserInfo(user.name, user.about)
@@ -69,9 +71,7 @@ function App() {
                 })
                 closeAllPopups()
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            .catch((err) => { console.log(err); })
     }
     const handleUpdateAvatar = (user) => {
         api.updateAvatar(user.avatar)
@@ -82,9 +82,7 @@ function App() {
                 })
                 closeAllPopups()
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            .catch((err) => { console.log(err); })
     }
     const handleAddPlaceSubmit = (item) => {
         api.addNewCard(item.name, item.link)
@@ -94,9 +92,7 @@ function App() {
                 );
                 closeAllPopups();
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            .catch((err) => { console.log(err); })
     }
     const closeAllPopups = () => {
         setIsEditAvatarPopupOpen(false)
@@ -113,9 +109,7 @@ function App() {
                 setCards(res)
 
             })
-            .catch((err) => {
-                console.log(err);
-            })
+            .catch((err) => { console.log(err); })
     }, [])
 
     function onInfoTooltip(image, text) {
@@ -129,7 +123,7 @@ function App() {
         setLoggedIn(true);
         setEmail(email);
     };
-    
+
     const tokenCheck = () => {
         const jwt = getToken();
         if (!jwt) {
@@ -166,7 +160,7 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
-                {loggedIn ? <Header email={email} routePathName={'Выйти'}  loggedIn={loggedIn} loggedOut={onSignOut} /> : ''}
+                {loggedIn ? <Header email={email} routePathName={'Выйти'} loggedIn={loggedIn} loggedOut={onSignOut} /> : ''}
                 <Switch>
                     <Route path="/sign-up">
                         <Header routePathName={'Войти'} routePath={'/sign-in'} loggedIn={loggedIn} />

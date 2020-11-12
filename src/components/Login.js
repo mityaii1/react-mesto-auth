@@ -5,19 +5,8 @@ import * as apiAuth from '../utils/apiAuth';
 
 
 function Login({ onLogin }) {
-    // const [email, setEmail] = React.useState('')
-    // const [password, setPassword] = React.useState('')
     const [data, setData] = React.useState({ email: '', password: '' });
     const history = useHistory();
-    const [message, setMessage] = React.useState('');
-
-    // function handleChangeEmail(evt) {
-    //     setEmail(evt.target.value);
-    // }
-
-    // function handleChangePassword(evt) {
-    //     setPassword(evt.target.value);
-    // }
     const handleChange = (e) => {
         const { name, value } = e.target;
         setData((prevData) => ({
@@ -27,25 +16,29 @@ function Login({ onLogin }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         const { email, password } = data;
         if (!email || !password) {
             return;
         }
         apiAuth.authorize(email, password)
             .then((data) => {
-                if (!data) {
-                    setMessage('Что-то пошло не так!')
-                }
                 if (data) {
                     setToken(data.token);
                     setData({ email: '', password: '' });
-                    setMessage('');
                     onLogin(email, password)
                     history.push('/');
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                if (err.status === 401) {
+                    console.log('Пользователь с email не найден')
+                } else if (err.status === 400) {
+                    console.log('Не передано одно из полей ')
+                } else {
+                    console.log(err)
+                }
+            })
     }
 
     return (
