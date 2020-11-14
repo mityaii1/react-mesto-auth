@@ -25,11 +25,11 @@ function Register(props) {
             })
             .catch((err) => {
                 if (err.status === 400) {
-                    props.onInfoTooltip(false, 'Что-то пошло не так! Попробуйте ещё раз.')
                     console.log('Hекорректно заполнено одно из полей')
                 } else {
                     console.log(err)
                 }
+                props.onInfoTooltip(false, 'Что-то пошло не так! Попробуйте ещё раз.')
             })
     }
 

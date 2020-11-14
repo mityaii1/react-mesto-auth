@@ -4,7 +4,7 @@ import { setToken } from '../utils/token';
 import * as apiAuth from '../utils/apiAuth';
 
 
-function Login({ onLogin }) {
+function Login(props) {
     const [data, setData] = React.useState({ email: '', password: '' });
     const history = useHistory();
     const handleChange = (e) => {
@@ -26,7 +26,7 @@ function Login({ onLogin }) {
                 if (data) {
                     setToken(data.token);
                     setData({ email: '', password: '' });
-                    onLogin(email, password)
+                    props.onLogin(email, password)
                     history.push('/');
                 }
             })
@@ -38,6 +38,8 @@ function Login({ onLogin }) {
                 } else {
                     console.log(err)
                 }
+                props.onInfoTooltip(false, 'Что-то пошло не так! Попробуйте ещё раз.')
+                
             })
     }
 

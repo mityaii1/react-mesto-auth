@@ -168,7 +168,7 @@ function App() {
                     </Route>
                     <Route path="/sign-in">
                         <Header routePathName={'Регистрация'} routePath={'/sign-up'} loggedIn={loggedIn} />
-                        <Login onLogin={handleLogin} />
+                        <Login onLogin={handleLogin} onInfoTooltip={onInfoTooltip} />
                     </Route>
                     <ProtectedRoute path="/" loggedIn={loggedIn} component={Main}
                         onEditAvatar={handleEditAvatarClick}
